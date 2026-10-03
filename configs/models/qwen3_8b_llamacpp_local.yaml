@@ -1,0 +1,29 @@
+# MCEval-AgriQA 本地推理配置：Qwen3-8B via llama.cpp (Vulkan / Intel Arc 140T)
+#
+# 说明：
+#   老师的框架原本只通过 Ollama 调用本地模型，但 utils/model_loader.py 同时支持
+#   `openai_compatible` provider —— 直连 {base_url}/chat/completions，无需 Ollama。
+#   本配置即用于把 llama-server 暴露的 OpenAI 兼容接口接入评测流水线。
+#
+# 前置条件：
+#   1. 启动服务（思考模式必须关闭，否则 500 token 预算会被思考过程吃光，answer 为空）：
+#        cd C:\Users\ABC\llama-cpp
+#        $env:LLAMA_ARG_CHAT_TEMPLATE_KWARGS = '{"enable_thinking": false}'
+#        .\llama-server.exe -m models\Qwen3-8B-Q4_K_M.gguf -ngl 99 --host 127.0.0.1 `
+#            --port 8080 -c 32768 -np 1 -b 2048 -ub 256 --alias qwen3-8b --api-key sk-local-qwen3
+#   2. 设置 API Key 环境变量：
+#        $env:LLAMACPP_API_KEY = "sk-local-qwen3"
+#
+# 实测性能：Intel Core Ultra 9 285H + Arc 140T 核显，约 13.6 tok/s；
+#          关闭思考模式后单题典型耗时 1 秒左右。
+
+model_id: qwen3_8b_llamacpp_local
+display_name: Qwen3-8B (llama.cpp Vulkan, Intel Arc 140T 本地)
+provider: openai_compatible
+model: qwen3-8b
+base_url: http://127.0.0.1:8080/v1
+api_key_env: LLAMACPP_API_KEY
+temperature: 0.15
+max_tokens: 500
+seed: 8888
+timeout: 600
