@@ -18,7 +18,9 @@
 ```
 .
 ├── README.md          项目说明（本文件）
+├── CHANGELOG.md       更新日志
 ├── .gitignore         版本控制忽略规则
+├── .gitattributes     换行符与文件类型规范
 ├── docs/              设计文档、需求分析、答辩材料
 ├── src/               源代码
 └── tests/             测试用例
