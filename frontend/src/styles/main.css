@@ -1,0 +1,205 @@
+/* ==========================================================================
+   全局样式
+   颜色变量集中在这里，改一处全站生效 —— 这是"设计令牌"最朴素的用法。
+   ========================================================================== */
+
+:root {
+  --color-primary: #2e7d32;
+  --color-primary-light: #60ad5e;
+  --color-primary-pale: #e8f5e9;
+  --color-bg: #f5f7f5;
+  --color-surface: #ffffff;
+  --color-border: #e4e7ed;
+  --color-text: #1f2d1f;
+  --color-text-secondary: #6b7280;
+  --color-danger: #c62828;
+  --color-warning: #ef6c00;
+
+  --radius: 10px;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', Helvetica,
+    Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* 图表容器必须有明确高度，否则 ECharts 画不出来 —— 新手最常踩的坑之一 */
+.chart-box {
+  width: 100%;
+  height: 260px;
+}
+
+.chart-box--tall {
+  height: 420px;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  padding: 0 var(--space-6);
+  height: 60px;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.app-header__brand {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+.app-header__sub {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.app-header__spacer {
+  flex: 1;
+}
+
+.app-main {
+  padding: var(--space-5);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.section {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-5);
+  margin-bottom: var(--space-5);
+  box-shadow: var(--shadow-sm);
+}
+
+.section__title {
+  margin: 0 0 var(--space-2);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.section__desc {
+  margin: 0 0 var(--space-4);
+  color: var(--color-text-secondary);
+  font-size: 13px;
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.grid--2 {
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+}
+
+.grid--3 {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.chart-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  background: var(--color-surface);
+}
+
+.chart-card__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.chart-card__title {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.chart-card__unit {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+.chart-card__note {
+  margin-top: var(--space-2);
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.badge--paper {
+  background: #eef2ff;
+  color: #3949ab;
+}
+
+.badge--local {
+  background: var(--color-primary-pale);
+  color: var(--color-primary);
+}
+
+.badge--warn {
+  background: #fff3e0;
+  color: var(--color-warning);
+}
+
+.callout {
+  border-left: 4px solid var(--color-primary);
+  background: var(--color-primary-pale);
+  padding: var(--space-3) var(--space-4);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: 13px;
+}
+
+.callout--warn {
+  border-left-color: var(--color-warning);
+  background: #fff8e1;
+}
+
+.muted {
+  color: var(--color-text-secondary);
+}
+
+.empty-hint {
+  padding: var(--space-6);
+  text-align: center;
+  color: var(--color-text-secondary);
+}

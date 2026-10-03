@@ -22,6 +22,7 @@
 ├── .gitignore         版本控制忽略规则
 ├── .gitattributes     换行符与文件类型规范
 ├── docs/              设计文档、任务理解、上手指南
+├── frontend/          Vue3 前端（问答界面 + 评测可视化看板）
 ├── configs/           模型配置（含本地 llama.cpp 接入配置）
 ├── scripts/           自研脚本（如任务子集生成器）
 ├── src/               源代码
